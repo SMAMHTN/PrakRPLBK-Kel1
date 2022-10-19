@@ -57,3 +57,13 @@ const handleClick = () => {
     ? htmlValue.join('<br/>')
     : 'Data Tidak Ditemukan!';
 };
+
+const findData = (data) => {
+  if (Number(input.value)) {
+    return data.nim.toString().includes(input.value);
+  }
+  return (
+    data.nama_lengkap.toLowerCase().includes(input.value.toLowerCase()) ||
+    data.nama_panggilan.toLowerCase().includes(input.value.toLowerCase())
+  );
+};
