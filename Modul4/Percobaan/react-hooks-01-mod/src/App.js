@@ -6,12 +6,9 @@ import { useState } from "react";
 import InputComponent from "./learn-useState";
 import Context from "./learn-useContext";
 import AgeComponent from "./learn-useRef";
-
-// Import Bootstrap
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import { LinkContainer } from "react-router-bootstrap";
 
 function App() {
@@ -20,7 +17,6 @@ function App() {
     <Router>
       <Navbar bg="light" expand="lg">
         <Container>
-          
           <Navbar.Brand>Kelompok 1</Navbar.Brand>
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -43,23 +39,6 @@ function App() {
         </Container>
       </Navbar>
       <div className="App-header">
-        {/* <nav className="NavBar">
-          <ul className="ul">
-            <li className="li">
-              <Link to="/">Use State</Link>
-            </li>
-            <li className="li">
-              <Link to="/effect">Use Effect</Link>
-            </li>
-            <li className="li">
-              <Link to="/context">Use Context</Link>
-            </li>
-            <li className="li">
-              <Link to="/ref">Use Ref</Link>
-            </li>
-          </ul>
-        </nav> */}
-
         <UserContext.Provider value={{ name, setName }}>
           {console.log(name)}
           <Routes>
