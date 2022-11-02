@@ -1,52 +1,34 @@
-import React, { useState, useContext } from "react";
-import "./Index.css";
-const themes = {
-    light: {
-        id: 1,
-        foreground: "#000000",
-        background: "#eeeeee",
+import { useRef, useContext } from "react";
+import UserContext from "../context/UserContext";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Container from "react-bootstrap/Container";
+import Stack from "react-bootstrap/Stack";
+import InputGroup from "react-bootstrap/InputGroup";
 
-    },
-    dark: {
-        id: 2,
-        foreground: "#ffffff",
-        background: "#222222",
-    },
-}
-const ThemeContext = React.createContext(themes.light);
-export default function Index() {
-    const [theme, setTheme] = useState(themes.dark);
-    const changeTheme = () => {
-        if (theme.id === themes.light.id) {
-            setTheme(themes.dark);
-        } else {
-            setTheme(themes.light);
-        }
-    };
-    return (
-        <ThemeContext.Provider value={{ theme, changeTheme }}>
-            <div className="Main" style={{
-                background:
-                    theme.background, color: theme.foreground
-            }}>
-                <p className="Text">Theme by useContext</p>
-                <p>KELOMPOKXX</p>
-                <ThemedButton />
-            </div>
-        </ThemeContext.Provider>
-    );
-}
-function ThemedButton() {
-    const { theme, changeTheme } = useContext(ThemeContext);
-    return (
-        <button
-            className="Button"
-            style={{
-                background: theme.background, color:
-                    theme.foreground
-            }}
-            onClick={changeTheme}>
-            i am styled by theme context!
-        </button>
-    );
+export default function Context() {
+  const inputName = useRef();
+  const { name, setName } = useContext(UserContext);
+
+  const changeName = () => setName(inputName.current.value);
+  return (
+    <>
+      <Container>
+        <Stack gap={3}>
+          <h2 style={{ textAlign: "center" }}>Welcome {name}</h2>
+          <InputGroup className="mb-3">
+            <Form.Control
+              type="text"
+              ref={inputName}
+              autoComplete="off"
+              placeholder="Enter Your Name"
+            />
+            <Button onClick={changeName} variant="primary">
+              Submit
+            </Button>
+          </InputGroup>
+        </Stack>
+      </Container>
+    </>
+  );
 }
