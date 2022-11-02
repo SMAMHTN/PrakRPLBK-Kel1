@@ -1,5 +1,10 @@
-import { useRef, useContext } from 'react';
-import UserContext from '../context/UserContext';
+import { useRef, useContext } from "react";
+import UserContext from "../context/UserContext";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Container from "react-bootstrap/Container";
+import Stack from "react-bootstrap/Stack";
+import InputGroup from "react-bootstrap/InputGroup";
 
 export default function Context() {
   const inputName = useRef();
@@ -8,10 +13,22 @@ export default function Context() {
   const changeName = () => setName(inputName.current.value);
   return (
     <>
-      <h2>Welcome {name}</h2>
-      <label htmlFor='name'>Nama :</label>
-      <input type='text' ref={inputName} />
-      <button onClick={changeName}>Submit</button>
+      <Container>
+        <Stack gap={3}>
+          <h2 style={{ textAlign: "center" }}>Welcome {name}</h2>
+          <InputGroup className="mb-3">
+            <Form.Control
+              type="text"
+              ref={inputName}
+              autoComplete="off"
+              placeholder="Enter Your Name"
+            />
+            <Button onClick={changeName} variant="primary">
+              Submit
+            </Button>
+          </InputGroup>
+        </Stack>
+      </Container>
     </>
   );
 }

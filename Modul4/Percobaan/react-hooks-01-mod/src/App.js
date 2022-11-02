@@ -1,39 +1,72 @@
-import './App.css';
-import UserContext from './context/UserContext';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Effect from './learn-useEffect';
-import { useState } from 'react';
-import InputComponent from './learn-useState';
-import Context from './learn-useContext';
-import AgeComponent from './learn-useRef';
+import "./App.css";
+import UserContext from "./context/UserContext";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Effect from "./learn-useEffect";
+import { useState } from "react";
+import InputComponent from "./learn-useState";
+import Context from "./learn-useContext";
+import AgeComponent from "./learn-useRef";
+
+// Import Bootstrap
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import { LinkContainer } from "react-router-bootstrap";
+
 function App() {
-  const [name, setName] = useState('Strangers');
+  const [name, setName] = useState("Strangers");
   return (
     <Router>
-      <div className='App-header'>
-        <nav className='NavBar'>
-          <ul className='ul'>
-            <li className='li'>
-              <Link to='/'>Use State</Link>
+      <Navbar bg="light" expand="lg">
+        <Container>
+          
+          <Navbar.Brand>Kelompok 1</Navbar.Brand>
+
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <LinkContainer to="/">
+                <Nav.Link>Use State</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/effect">
+                <Nav.Link>Use Effect</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/context">
+                <Nav.Link>Use Context</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/ref">
+                <Nav.Link>Use Ref</Nav.Link>
+              </LinkContainer>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+      <div className="App-header">
+        {/* <nav className="NavBar">
+          <ul className="ul">
+            <li className="li">
+              <Link to="/">Use State</Link>
             </li>
-            <li className='li'>
-              <Link to='/effect'>Use Effect</Link>
+            <li className="li">
+              <Link to="/effect">Use Effect</Link>
             </li>
-            <li className='li'>
-              <Link to='/context'>Use Context</Link>
+            <li className="li">
+              <Link to="/context">Use Context</Link>
             </li>
-            <li className='li'>
-              <Link to='/ref'>Use Ref</Link>
+            <li className="li">
+              <Link to="/ref">Use Ref</Link>
             </li>
           </ul>
-        </nav>
+        </nav> */}
+
         <UserContext.Provider value={{ name, setName }}>
           {console.log(name)}
           <Routes>
-            <Route path='/' exact element={<InputComponent />} />
-            <Route path='/effect' exact element={<Effect />} />
-            <Route path='/context' exact element={<Context />} />
-            <Route path='/ref' exact element={<AgeComponent />} />
+            <Route path="/" exact element={<InputComponent />} />
+            <Route path="/effect" exact element={<Effect />} />
+            <Route path="/context" exact element={<Context />} />
+            <Route path="/ref" exact element={<AgeComponent />} />
           </Routes>
         </UserContext.Provider>
       </div>
