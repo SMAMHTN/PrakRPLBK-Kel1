@@ -5,6 +5,7 @@ import Effect from './learn-useEffect';
 import { useState } from 'react';
 import InputComponent from './learn-useState';
 import Context from './learn-useContext';
+import AgeComponent from './learn-useRef';
 function App() {
   const [name, setName] = useState('Strangers');
   return (
@@ -21,6 +22,9 @@ function App() {
             <li className='li'>
               <Link to='/context'>Use Context</Link>
             </li>
+            <li className='li'>
+              <Link to='/ref'>Use Ref</Link>
+            </li>
           </ul>
         </nav>
         <UserContext.Provider value={{ name, setName }}>
@@ -29,6 +33,7 @@ function App() {
             <Route path='/' exact element={<InputComponent />} />
             <Route path='/effect' exact element={<Effect />} />
             <Route path='/context' exact element={<Context />} />
+            <Route path='/ref' exact element={<AgeComponent />} />
           </Routes>
         </UserContext.Provider>
       </div>
